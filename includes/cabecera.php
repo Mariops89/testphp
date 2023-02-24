@@ -1,7 +1,7 @@
 <div class="cabecera">
     <div class="row">
-        <div class="col">
-
+        <div class="col contador">
+             <span>0</span> &nbsp;/ 10
         </div>
         <div class="col-7 tiempo">
 
