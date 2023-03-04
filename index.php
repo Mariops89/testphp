@@ -14,24 +14,29 @@
     <?php
     include "includes/cabecera.php";
     ?>
-    <div class="instruccion">
-        <p>
-            Nombre y apellidos: _____________________________________________________________________________________________________
-            Fecha: ____ /____ / 20____
-        </p>
-        <p>
-            <b>
-                Este test consta de 10 preguntas. Cada pregunta sumará 1 punto si es correcta y restará 0,5 puntos si es incorrecta.
-                Las preguntas sin contestar se considerarán nulas y no restarán puntos.
-                La puntuación se obtiene sobre 10.
-            </b>
-        </p>
+    <div class="row scroll">
+        <div class="col">
+            <div class="instruccion">
+                <p>
+                    Nombre y apellidos: _____________________________________________________________________________________________________
+                    Fecha: ____ /____ / 20____
+                </p>
+                <p>
+                    <b>
+                        Este test consta de 10 preguntas. Cada pregunta sumará 1 punto si es correcta y restará 0,5 puntos si es incorrecta.
+                        Las preguntas sin contestar se considerarán nulas y no restarán puntos.
+                        La puntuación se obtiene sobre 10. Este test es cronometrado y no se podrá seguir una vez finalizado el tiempo.
+                    </b>
+                </p>
+            </div>
+
+            <?php
+            include "includes/formulario.php";
+
+            ?>
+        </div>
+
     </div>
-
-    <?php
-    include "includes/formulario.php";
-
-    ?>
 </div>
 
 
@@ -39,6 +44,8 @@
         integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
         crossorigin="anonymous"></script>
 <script src="js/jquery-3.6.3.min.js"></script>
+<script src="js/countdowntimer.js"></script>
+<script src="js/moment-with-locales.min.js"></script>
 <script src="js/scripts.js"></script>
 
 </body>

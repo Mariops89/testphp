@@ -35,12 +35,25 @@
     border-width: 2px 0;
 }
 
+.scroll{
+    overflow-y: auto;
+    height: calc(100vh - 200px);
+}
+
 .instruccion p {
     margin-top: 50px;
     margin-bottom: 50px;
+    text-align: justify;
 }
 
 .contador {
+    font-size: 36px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.tiempo {
     font-size: 36px;
     display: flex;
     justify-content: center;
