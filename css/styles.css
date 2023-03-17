@@ -46,16 +46,59 @@
     text-align: justify;
 }
 
-.contador {
+.cabecera .texto-cabecera {
     font-size: 36px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.tiempo {
-    font-size: 36px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.nota {
+    font-size: 50px;
+}
+
+code {
+    color: blue;
+}
+
+.fa-solid {
+    display: none;
+}
+
+.correcta {
+    color: orange;
+    font-weight: bold
+}
+
+.correcta code {
+    color: orange;
+    font-weight: bold
+}
+
+.acertada {
+    color: green;
+    font-weight: bold;
+}
+
+.acertada code {
+    color: green;
+    font-weight: bold
+}
+
+.acertada .fa-check {
+    display: inline-block;
+}
+
+.fallada {
+    color: red;
+    font-weight: bold;
+}
+
+.fallada code {
+    color: red;
+    font-weight: bold
+}
+
+.fallada .fa-xmark {
+    display: inline-block;
 }

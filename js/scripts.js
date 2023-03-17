@@ -37,11 +37,42 @@ $(function () {
             elemento.css('color', 'red');
             if (segundos <= 0) {
                 clearInterval(interval);
-                $('input:checkbox').prop('disabled', true);
+                // $('input:checkbox').prop('disabled', true);
             }
         }
     }, 200);
 
+
+    $('#enviar').on('click', function(ev) {
+        let datos =  $('#formulario').serializeArray()
+        let success = 0;
+        let errors = 0;
+        $.post("results.php", datos, function (response) {
+
+            //pinto en todas las preguntas, la solución
+            $.each(response.solutions, function (question, solution) {
+                $('#' + question + solution).parent().addClass('correcta');
+            });
+            //pinto el error en aquellas preguntas que he fallado
+            $.each(response.wrong, function (k, question) {
+                $('#' + question).parent().addClass('fallada');
+            });
+            //pinto el acierto en aquellas preguntas que he acertado
+            $.each(response.success, function (k, question) {
+                $('#' + question).parent().addClass('acertada');
+            });
+
+
+            // if (response.nota < 5) {
+            //     $('.nota').css('color', 'red');
+            // } else {
+            //     $('.nota').css('color', 'green');
+            // }
+
+            let color = response.nota < 5 ? 'red' : 'green';
+            $('.nota').html(response.nota.toString().replace('.',',')).css('color', color);
+        }, 'json')
+    })
 
 });
 
