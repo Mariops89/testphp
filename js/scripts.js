@@ -1,4 +1,5 @@
 $(function () {
+    const myModal = new bootstrap.Modal('#modal-submit');
     let contador = 0;
 
     $('input:checkbox').on('change', function () {
@@ -24,10 +25,12 @@ $(function () {
         //     button:  $('input:checkbox'),
         // });
 
-    let cont = 20;
+    let cont = 10;
     let elemento = $('.counter .cont1');
     let inicio = moment();
-    let interval = setInterval(function () {
+    let interval = setInterval(intervalo, 200);
+
+    function intervalo() {
         let diff = moment().diff(inicio, 'seconds');
         let segundos = cont - diff;
         let html = moment().startOf('day').add(segundos, 'seconds').format('mm:ss');
@@ -36,18 +39,25 @@ $(function () {
         if (segundos <= 5) {
             elemento.css('color', 'red');
             if (segundos <= 0) {
-                clearInterval(interval);
-                // $('input:checkbox').prop('disabled', true);
+                $('.btn-form').remove();
+                clearInterval(interval); //stop
+                enviar(segundos);
             }
         }
-    }, 200);
+    }
 
 
-    $('#enviar').on('click', function(ev) {
+    $('.botones-form').on('click', '#enviar', function() {
+        $('.btn-form').remove();
+        clearInterval(interval);
+        enviar();
+    })
+
+
+    function enviar(segundos) {
         let datos =  $('#formulario').serializeArray()
-        let success = 0;
-        let errors = 0;
         $.post("results.php", datos, function (response) {
+            $('input:checkbox').prop('disabled', true);
 
             //pinto en todas las preguntas, la solución
             $.each(response.solutions, function (question, solution) {
@@ -62,17 +72,20 @@ $(function () {
                 $('#' + question).parent().addClass('acertada');
             });
 
-
-            // if (response.nota < 5) {
-            //     $('.nota').css('color', 'red');
-            // } else {
-            //     $('.nota').css('color', 'green');
-            // }
-
             let color = response.nota < 5 ? 'red' : 'green';
             $('.nota').html(response.nota.toString().replace('.',',')).css('color', color);
-        }, 'json')
-    })
+            if (segundos <= 0) {
+                myModal.show();
+
+            }
+        }, 'json').fail(function () {
+            $('.botones-form').html(
+                `<button type="reset" class="btn btn-danger mb-3 btn-form">Borrar respuestas</button>
+                <button type="button" id="enviar" class="btn btn-success mb-3 btn-form">He acabado</button>`
+            );
+            interval = setInterval(intervalo, 200);
+        })
+    }
 
 });
 

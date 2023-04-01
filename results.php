@@ -37,7 +37,6 @@ function correct($solutions, $answers) : array
     $nota = 0;
     foreach ($answers as $question => $answer) {
         if ($solutions[$question] == $answer) {
-//            echo "La pregunta $question es correcta";
             $success[] = $question . $answer;
             $nota = $nota + 1;
         } else {

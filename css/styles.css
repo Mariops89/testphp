@@ -102,3 +102,7 @@ code {
 .fallada .fa-xmark {
     display: inline-block;
 }
+
+.form-check-input:disabled~.form-check-label, .form-check-input[disabled]~.form-check-label {
+    opacity: 1;
+}

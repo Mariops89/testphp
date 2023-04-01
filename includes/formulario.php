@@ -251,9 +251,12 @@
                     </label>
                     <i class="fa-solid fa-check"></i><i class="fa-solid fa-xmark"></i>
                 </div>
-                <div class="col-auto">
-                    <button type="reset" class="btn btn-danger mb-3">Borrar respuestas</button>
-                    <button type="button" id="enviar" class="btn btn-success mb-3">He acabado</button>
+
+                <!-- buttons -->
+
+                <div class="mt-5 text-center botones-form">
+                    <button type="reset" class="btn btn-danger mb-3 btn-form">Borrar respuestas</button>
+                    <button type="button" id="enviar" class="btn btn-success mb-3 btn-form">He acabado</button>
                 </div>
             </form>
         </div>
